@@ -32,9 +32,8 @@ protected void KillIsaac() {
  }
      public void checkFire()
     {
-   if(Greenfoot.isKeyDown("space")) {
-       getWorld().addObject(new Bullet(), getX(), getY());
-   }
+       getWorld().addObject(new Bullet(), getX()+50, getY());
+       //Greenfoot.delay(30);
 }
  
     public void act() 
@@ -55,7 +54,7 @@ protected void KillIsaac() {
                 
             setImage(imageDown);
             setRotation(90);
-            move (5);
+            move (6);
 }
         if (Greenfoot.isKeyDown("a")) {
                  if(getImage() == imageDown || (getImage() == imageRight)) {
@@ -63,7 +62,7 @@ protected void KillIsaac() {
                 }
            
             setRotation(180);
-            move (5);
+            move (6);
     }
             if (Greenfoot.isKeyDown("w")) {
                  if(getImage() == imageLeft || (getImage() == imageRight)) {
@@ -71,23 +70,18 @@ protected void KillIsaac() {
                 }
             setImage(imageDown);
             setRotation(90);
-            move (-5);
+            move (-6);
         }
-        {
-     checkFire();
-    //leave the rest of your player's act method alone
-}
-//after the "act()" method, add a new method:
-
-            if (hp==0) {
-                KillIsaac();
-            }
-    }
-    /*
-     *                  if (Isaac.getX()&&Isaac.getY()==SadIsaac.getX()&&SadIsaac.gety()){
-                hp--;
+        //fire
+                if (Greenfoot.isKeyDown("right")) {
+                 checkFire();
+                 try {
+                 Thread.sleep(100);
                 }
-     */
-    
-
+                catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+        }
+        
+    }
 }

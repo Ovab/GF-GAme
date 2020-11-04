@@ -8,12 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bullet extends Actor
 {
+    int hp= 10;
+    int hit= 0;
     /**
      * Act - do whatever the Bullet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
    public void act()
    {
+                     //setRotation(Isaac.getRotation());
        setLocation(getX() + speed, getY());
        checkBoundaries();
        destroyEnemies();
@@ -33,12 +36,17 @@ public class Bullet extends Actor
    //"destroyEnemies()" destroys enemies.
    public void destroyEnemies()
    {
-       //"Enemy" can be any class that you want the bullet to destroy. 
-       Actor enemy = getOneIntersectingObject(Isaac.class);
+       //"Enemy" can be any class that you want the bullet to destroy.
+       Actor enemy = getOneIntersectingObject(SadIsaac.class);
        if(enemy != null) {
-            getWorld().removeObject(enemy);
+           hp-=1;
+            System.out.println(hp);
+            //getWorld().removeObject(enemy);
             getWorld().removeObject(this);
        }
+       if(hp==0){
+          getWorld().removeObject(enemy);
+        }
    }
  
    private int speed = 10;

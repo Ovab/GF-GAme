@@ -30,5 +30,11 @@ public class SadIsaac extends Actor
         turnTowards(Isaac.getX(), Isaac.getY()); // turn toward Isaac
         
 
+               Actor enemy = getOneIntersectingObject(Isaac.class);
+       if(enemy != null) {
+            getWorld().removeObject(enemy);
+            getWorld().removeObject(this);
+       }
 }
+
 }
