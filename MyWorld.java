@@ -12,7 +12,9 @@ public class MyWorld extends World
     protected void populateTheWorld()
 {
 addObject(new Isaac(), 350, 250);
+ for (int i = 0; i < 100; i++) {
 addObject(new SadIsaac(), 1000, 500);
+}
 }
 
     /**

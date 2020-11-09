@@ -9,8 +9,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Isaac extends Actor
 {
     int hp=3;
+    private boolean fired;    private boolean fired2;     private boolean fired3;     private boolean fired4;
     private GreenfootImage imageDown;
     private GreenfootImage imageLeft;
+        private GreenfootImage imageUp;
         private GreenfootImage imageRight;
     /**
      * Act - do whatever the Isaac wants to do. This method is called whenever
@@ -18,6 +20,7 @@ public class Isaac extends Actor
      */
 public Isaac()
 {
+    imageUp= new GreenfootImage("isaacUp.png");
     imageLeft= new GreenfootImage("isaacleft.png");
     imageRight= new GreenfootImage("isaacright.png");
     imageDown= new GreenfootImage("isaacdwn.png");
@@ -30,25 +33,60 @@ protected void KillIsaac() {
  getWorld().removeObject(Isaac);
  Greenfoot.stop();
  }
-     public void checkFire()
-    {
-       getWorld().addObject(new Bullet(), getX()+50, getY());
-       //Greenfoot.delay(30);
+     public void checkFire() {
+    bullet bullet = new bullet();
+    getWorld().addObject(bullet, getX()+26, getY());
+    if (getImage().equals(imageLeft)) bullet.setRotation(180);
+    else if (getImage().equals(imageDown)) bullet.setRotation(90);
+    else if (getImage().equals(imageUp)) bullet.setRotation(270);
+    else bullet.setRotation(0);
 }
  
     public void act() 
     {
         // Add your action code here.
             //player movement
-            if (Greenfoot.isKeyDown("d")) {
-                 if(getImage() == imageDown || (getImage() == imageLeft)) {
+            Move();
+        //fire
+            if (fired != Greenfoot.isKeyDown("right")) {
+                    fired = ! fired; // record change
+                        if (fired) {
+                                checkFire(); 
+                            }
+                        }     
+                                
+            if (fired2 != Greenfoot.isKeyDown("left")) {
+                    fired2 =! fired2; // record change
+                        if (fired2) {
+                                checkFire(); 
+                            }
+                        } 
+        
+            if (fired3 != Greenfoot.isKeyDown("down")) {
+                    fired3 = ! fired3; // record change
+                        if (fired3) {
+                                checkFire(); 
+                            }
+                        } 
+        
+            if (fired4 != Greenfoot.isKeyDown("up")) {
+                    fired4 = ! fired4; // record change
+                        if (fired4) {
+                                checkFire(); 
+                            }
+                        } 
+        
+    }
+private void Move() {
+                if (Greenfoot.isKeyDown("d")) {
+                 if(getImage() == imageDown || (getImage() == imageLeft||(getImage() == imageUp))) {
                  setImage(imageRight);
                 }
             setRotation(0);
-            move (5);
+            move (6);
     }
         if (Greenfoot.isKeyDown("s")) {
-                 if(getImage() == imageLeft || (getImage() == imageRight)) {
+                 if(getImage() == imageLeft || (getImage() == imageRight||(getImage() == imageUp))) {
                  setImage(imageDown);
                 }
                 
@@ -57,7 +95,7 @@ protected void KillIsaac() {
             move (6);
 }
         if (Greenfoot.isKeyDown("a")) {
-                 if(getImage() == imageDown || (getImage() == imageRight)) {
+                 if(getImage() == imageDown || (getImage() == imageRight ||(getImage() == imageUp))) {
                  setImage(imageLeft);
                 }
            
@@ -66,22 +104,11 @@ protected void KillIsaac() {
     }
             if (Greenfoot.isKeyDown("w")) {
                  if(getImage() == imageLeft || (getImage() == imageRight)) {
-                 setImage(imageDown);
+                 setImage(imageUp);
                 }
-            setImage(imageDown);
+            setImage(imageUp);
             setRotation(90);
             move (-6);
         }
-        //fire
-                if (Greenfoot.isKeyDown("right")) {
-                 checkFire();
-                 try {
-                 Thread.sleep(100);
-                }
-                catch(InterruptedException ex) {
-                    Thread.currentThread().interrupt();
-                }
-        }
-        
     }
 }

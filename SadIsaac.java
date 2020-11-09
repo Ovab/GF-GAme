@@ -33,6 +33,7 @@ public class SadIsaac extends Actor
                Actor enemy = getOneIntersectingObject(Isaac.class);
        if(enemy != null) {
             getWorld().removeObject(enemy);
+             Greenfoot.stop();
             getWorld().removeObject(this);
        }
 }
