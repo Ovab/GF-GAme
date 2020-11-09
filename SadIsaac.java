@@ -34,6 +34,7 @@ public class SadIsaac extends Actor
        if(enemy != null) {
             getWorld().removeObject(enemy);
              Greenfoot.stop();
+             Greenfoot.playSound("BABA BOOEY.mp3");
             getWorld().removeObject(this);
        }
 }

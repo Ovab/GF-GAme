@@ -36,8 +36,8 @@ protected void KillIsaac() {
      public void checkFire() {
     bullet bullet = new bullet();
     getWorld().addObject(bullet, getX()+26, getY());
-    if (getImage().equals(imageLeft)) bullet.setRotation(180);
-    else if (getImage().equals(imageDown)) bullet.setRotation(90);
+    if (Greenfoot.isKeyDown("left")) { bullet.setRotation(180); bullet.speed=(-10); bullet.turn = (0);}
+    else if (getImage().equals(imageDown)) { bullet.setRotation(90); bullet.turn = (10); bullet.speed=(0);}
     else if (getImage().equals(imageUp)) bullet.setRotation(270);
     else bullet.setRotation(0);
 }
