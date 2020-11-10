@@ -10,7 +10,6 @@ public class Isaac extends Actor
 {
     int hp=3;
     int bomb=0;
-    int level;
     private boolean fired;    private boolean fired2;     private boolean fired3;     private boolean fired4;
     private GreenfootImage imageDown;
     private GreenfootImage imageLeft;
@@ -28,30 +27,16 @@ public Isaac()
     imageDown= new GreenfootImage("isaacdwn.png");
 }
 
-protected void KillIsaac() {
- Actor Isaac;
- Isaac = getOneObjectAtOffset(0, 0, Isaac.class);
- Greenfoot.playSound("scream.mp3");
- getWorld().removeObject(Isaac);
- Greenfoot.stop();
- }
-     public void checkFire() {
-         bomb++;
-    bullet bullet = new bullet();
-    getWorld().addObject(bullet, getX()+26, getY());
-    if (Greenfoot.isKeyDown("left")) {bullet.speed=(-10); bullet.turn = (0);}
-    else if (Greenfoot.isKeyDown("down")&&(bomb>=20)) {
-         for (int i = 0; i < 100; i++) {
-        bullet.speed=(0); bullet.turn = (0); bomb-=20;}
-    }
-    else if (Greenfoot.isKeyDown("up")) {Greenfoot.playSound("Fart.mp3");}
-    else bullet.setRotation(0);
+public void changeworld() {
+             if (isTouching(Deur.class)) {
+                Greenfoot.setWorld(new MyWorld());
+            }   
 }
+
  
     public void act() 
     {
-                                // Greenfoot.playSound("Rippin.mp3");
-        // Add your action code here.
+        changeworld();
             //player movement
             Move();
         //fire
@@ -79,14 +64,19 @@ protected void KillIsaac() {
             if (fired4 != Greenfoot.isKeyDown("up")) {
                     fired4 = ! fired4; // record change
                         if (fired4) {
-                                Greenfoot.playSound("Fart.mp3");
-                                bomb+=5;
+                                checkFire(); 
                             }
                         } 
-            if (isTouching(Deur.class)) {
-                Greenfoot.setWorld(new MyWorld2());
-            }
     }
+         public void checkFire() {
+         bomb++;
+    bullet bullet = new bullet();
+    getWorld().addObject(bullet, getX()+26, getY());
+    if (Greenfoot.isKeyDown("left")) {bullet.speed=(-10); bullet.turn = (0);}
+    else if (Greenfoot.isKeyDown("down")&&(bomb>=20)) {bullet.speed=(0); bullet.turn = (0); bomb=0;}
+    else if (Greenfoot.isKeyDown("up")) {Greenfoot.playSound("Fart.mp3");}
+    else bullet.setRotation(0);
+}
 private void Move() {
                 if (Greenfoot.isKeyDown("d")) {
                  if(getImage() == imageDown || (getImage() == imageLeft||(getImage() == imageUp))) {
