@@ -11,7 +11,7 @@ public class bullet extends Actor
     int hp= 10;
     int hit= 0;
     public int speed = 10;
-    public int turn = 10;
+    public int turn = 0;
     /**
      * Act - do whatever the CopyOfBullet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
