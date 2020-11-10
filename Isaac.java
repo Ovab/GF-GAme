@@ -78,7 +78,9 @@ protected void KillIsaac() {
                                 checkFire(); 
                             }
                         } 
-        
+            if (isTouching(Deur.class)) {
+                Greenfoot.setWorld(new MyWorld2());
+            }
     }
 private void Move() {
                 if (Greenfoot.isKeyDown("d")) {
