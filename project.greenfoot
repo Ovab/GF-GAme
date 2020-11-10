@@ -12,9 +12,10 @@ dependency2.from=MyWorld
 dependency2.to=SadIsaac
 dependency2.type=UsesDependency
 dependency3.from=Isaac
-dependency3.to=bullet
+dependency3.to=MyWorld
 dependency3.type=UsesDependency
 dependency4.from=Isaac
+<<<<<<< Updated upstream
 dependency4.to=MyWorld2
 dependency4.type=UsesDependency
 dependency5.from=Isaac
@@ -30,6 +31,20 @@ editor.fx.0.y=135
 height=838
 package.numDependencies=6
 package.numTargets=6
+=======
+dependency4.to=bullet
+dependency4.type=UsesDependency
+dependency5.from=bullet
+dependency5.to=SadIsaac
+dependency5.type=UsesDependency
+editor.fx.0.height=1056
+editor.fx.0.width=1936
+editor.fx.0.x=-8
+editor.fx.0.y=-8
+height=1047
+package.numDependencies=5
+package.numTargets=4
+>>>>>>> Stashed changes
 project.charset=UTF-8
 publish.hasSource=false
 publish.locked=true
