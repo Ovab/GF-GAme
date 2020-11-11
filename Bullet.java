@@ -12,39 +12,42 @@ public class bullet extends Actor
     int hit= 0;
     public int speed = 10;
     public int turn = 0;
+     private GreenfootImage splatter;
+          private GreenfootImage trans;
+    public bullet(){
+    trans = new GreenfootImage("1x1.png");
     splatter = new GreenfootImage("projectile burst.png");
+}
     /**
      * Act - do whatever the CopyOfBullet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-   public void act()
-   {
+   public void act()   {
+
                      //setRotation(Isaac.getRotation());
        setLocation(getX() + speed + turn, getY());
-       //checkBoundaries();
-       destroyEnemies();
+       checkBoundaries();
        if(foundRock()) {
-           setImage(gifImage.getCurrentImage());
-            if (timer.millisElapsed() > 100 && Greenfoot.isKeyDown("space")){
+           speed=0;
+            if (timer.millisElapsed() > 10){
      // Code here for firing a new shot
       setImage(splatter);
-                     getWorld().removeObject(this);
-
-     timer.mark(); // Reset the timer
- }
-        }
+                         timer.mark(); // Reset the timer 
+                        }
+                    }
+                       destroyEnemies();
    }
     private SimpleTimer timer = new SimpleTimer();
       //destroy bullets that are off screen.
-   public void checkBoundaries()
-   {
-       if(getX() > getWorld().getWidth() -30) 
-            getWorld().removeObject(this);
-       if(getY() > getWorld().getHeight() - 1) 
-            getWorld().removeObject(this);
-   }
-   
-   
+   public void checkBoundaries(){
+       if(getX() > getWorld().getWidth() -10 || (getX() < 10)){
+                       if (timer.millisElapsed() > 10){
+     // Code here for firing a new shot
+      setImage(splatter);
+                         timer.mark(); // Reset the timer 
+                    }
+                }
+            }
    //"destroyEnemies()" destroys enemies.
    public void destroyEnemies()
    {

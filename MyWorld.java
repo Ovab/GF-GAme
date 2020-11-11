@@ -18,7 +18,7 @@ GreenfootSound backgroundMusic = new GreenfootSound("Rippin.mp3");
 }
 public void stopped(){backgroundMusic.pause();}
  
-public void started(){backgroundMusic.playLoop();}
+//public void started(){backgroundMusic.playLoop();}
 
     /**
      * Constructor for objects of class MyWorld.

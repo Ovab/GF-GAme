@@ -24,7 +24,9 @@ public class SadIsaac extends Actor
     public void act() 
     {
         // Add your action code here.
-        foundRock();
+                if(foundRock()) {
+            move(-15);
+        }
  move(4);
         if (getWorld().getObjects(Isaac.class).isEmpty()) return; // skips following if the Isaac is not in world
         Actor Isaac = (Actor)getWorld().getObjects(Isaac.class).get(0); // gets reference to Isaac

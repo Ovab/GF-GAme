@@ -49,7 +49,7 @@ public void changeworld() {
         }
 
     }
-    
+        private SimpleTimer timer = new SimpleTimer();
     public void notspam() {
             if (fired != Greenfoot.isKeyDown("right")) {fired = ! fired;if (fired) {checkFire(); }}     
                                 
@@ -74,8 +74,8 @@ public void changeworld() {
          bullet bullet = new bullet();
          getWorld().addObject(bullet, getX()+26, getY());
          if (Greenfoot.isKeyDown("left")) {bullet.speed=(-10); bullet.turn = (0);}
-            else if (Greenfoot.isKeyDown("down")&&(bomb>=20)) {bullet.speed=(0); bullet.turn = (0); bomb=0;}
-                else bullet.setRotation(0);
+            else if (Greenfoot.isKeyDown("down") && (timer.millisElapsed() > 500)) {bullet.speed=(0); bullet.turn = (0); bomb=0;timer.mark();}
+                else if (Greenfoot.isKeyDown("right")) { bullet.setRotation(0); bullet.speed=(10); bullet.turn = (0);}
         }
 private void Move() {
                 if (Greenfoot.isKeyDown("d")) {
