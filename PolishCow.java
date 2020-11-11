@@ -15,7 +15,14 @@ public class PolishCow extends Actor
      */
     public void act() 
     {
+<<<<<<< HEAD
         
         setImage(myGif.getCurrentImage());
     }    
 }
+=======
+        move(3);
+        setImage(myGif.getCurrentImage());
+    }    
+}
+>>>>>>> 899df1c67bf634b8f821dff8fb13aaa49995309d

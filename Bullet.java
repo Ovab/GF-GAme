@@ -12,10 +12,15 @@ public class bullet extends Actor
     int hit= 0;
     public int speed = 10;
     public int turn = 0;
+<<<<<<< HEAD
      private GreenfootImage splatter;
           private GreenfootImage trans;
     public bullet(){
     trans = new GreenfootImage("1x1.png");
+=======
+    private GreenfootImage splatter;
+    public bullet(){
+>>>>>>> 899df1c67bf634b8f821dff8fb13aaa49995309d
     splatter = new GreenfootImage("projectile burst.png");
 }
     /**
@@ -28,8 +33,12 @@ public class bullet extends Actor
        setLocation(getX() + speed + turn, getY());
        checkBoundaries();
        if(foundRock()) {
+<<<<<<< HEAD
            speed=0;
             if (timer.millisElapsed() > 10){
+=======
+            if (timer.millisElapsed() > 100 && Greenfoot.isKeyDown("space")){
+>>>>>>> 899df1c67bf634b8f821dff8fb13aaa49995309d
      // Code here for firing a new shot
       setImage(splatter);
                          timer.mark(); // Reset the timer 
