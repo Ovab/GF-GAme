@@ -28,55 +28,55 @@ public Isaac()
 }
 
 public void changeworld() {
+    //boss room
              if (isTouching(Deur.class)) {
                 Greenfoot.setWorld(new MyWorld());
-            }   
+            }
+            //normal room
+             if (isTouching(Door1.class)) {
+                Greenfoot.setWorld(new MyWorld3());
+            }
 }
 
  
     public void act() 
     {
         changeworld();
-            //player movement
-            Move();
-        //fire
-            if (fired != Greenfoot.isKeyDown("right")) {
-                    fired = ! fired; // record change
-                        if (fired) {
-                                checkFire(); 
-                            }
-                        }     
-                                
-            if (fired2 != Greenfoot.isKeyDown("left")) {
-                    fired2 =! fired2; // record change
-                        if (fired2) {
-                                checkFire(); 
-                            }
-                        } 
-        
-            if (fired3 != Greenfoot.isKeyDown("down")) {
-                    fired3 = ! fired3; // record change
-                        if (fired3) {
-                                checkFire(); 
-                            }
-                        } 
-        
-            if (fired4 != Greenfoot.isKeyDown("up")) {
-                    fired4 = ! fired4; // record change
-                        if (fired4) {
-                                checkFire(); 
-                            }
-                        } 
+        notspam();
+        Move();
+        if(foundRock()) {
+            move(-15);
+        }
+
     }
+    
+    public void notspam() {
+            if (fired != Greenfoot.isKeyDown("right")) {fired = ! fired;if (fired) {checkFire(); }}     
+                                
+            if (fired2 != Greenfoot.isKeyDown("left")) {fired2 =! fired2;if (fired2) {checkFire(); }} 
+        
+            if (fired3 != Greenfoot.isKeyDown("down")) {fired3 = ! fired3;if (fired3) {checkFire(); }} 
+        
+            if (fired4 != Greenfoot.isKeyDown("up")) {fired4 = ! fired4;if (fired4) {Greenfoot.playSound("Fart.mp3"); bomb+=5;}} 
+    }
+    
+    protected boolean foundRock() {
+            Actor rock;
+            rock = getOneObjectAtOffset(0, 0, Rock.class);
+            if(rock != null) {
+                   return true;
+            }
+            return false;
+        }
+
          public void checkFire() {
          bomb++;
-    bullet bullet = new bullet();
-    getWorld().addObject(bullet, getX()+26, getY());
-    if (Greenfoot.isKeyDown("left")) {bullet.speed=(-10); bullet.turn = (0);}
-    else if (Greenfoot.isKeyDown("down")&&(bomb>=20)) {bullet.speed=(0); bullet.turn = (0); bomb=0;}
-    else if (Greenfoot.isKeyDown("up")) {Greenfoot.playSound("Fart.mp3");}
-    else bullet.setRotation(0);
-}
+         bullet bullet = new bullet();
+         getWorld().addObject(bullet, getX()+26, getY());
+         if (Greenfoot.isKeyDown("left")) {bullet.speed=(-10); bullet.turn = (0);}
+            else if (Greenfoot.isKeyDown("down")&&(bomb>=20)) {bullet.speed=(0); bullet.turn = (0); bomb=0;}
+                else bullet.setRotation(0);
+        }
 private void Move() {
                 if (Greenfoot.isKeyDown("d")) {
                  if(getImage() == imageDown || (getImage() == imageLeft||(getImage() == imageUp))) {
@@ -84,7 +84,7 @@ private void Move() {
                 }
             setRotation(0);
             move (6);
-    }
+        }
         if (Greenfoot.isKeyDown("s")) {
                  if(getImage() == imageLeft || (getImage() == imageRight||(getImage() == imageUp))) {
                  setImage(imageDown);
@@ -93,7 +93,7 @@ private void Move() {
             setImage(imageDown);
             setRotation(90);
             move (6);
-}
+        }
         if (Greenfoot.isKeyDown("a")) {
                  if(getImage() == imageDown || (getImage() == imageRight ||(getImage() == imageUp))) {
                  setImage(imageLeft);
@@ -101,7 +101,7 @@ private void Move() {
            
             setRotation(180);
             move (6);
-    }
+        }
             if (Greenfoot.isKeyDown("w")) {
                  if(getImage() == imageLeft || (getImage() == imageRight)) {
                  setImage(imageUp);

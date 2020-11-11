@@ -24,6 +24,7 @@ public class SadIsaac extends Actor
     public void act() 
     {
         // Add your action code here.
+        foundRock();
  move(4);
         if (getWorld().getObjects(Isaac.class).isEmpty()) return; // skips following if the Isaac is not in world
         Actor Isaac = (Actor)getWorld().getObjects(Isaac.class).get(0); // gets reference to Isaac
@@ -39,4 +40,12 @@ public class SadIsaac extends Actor
        }
 }
 
+    protected boolean foundRock() {
+            Actor rock;
+            rock = getOneObjectAtOffset(0, 0, Rock.class);
+            if(rock != null) {
+                   return true;
+            }
+            return false;
+        }
 }

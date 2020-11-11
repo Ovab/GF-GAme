@@ -11,6 +11,7 @@ public class MyWorld2 extends World
         protected void populateTheWorld()
 {
     addObject(new Isaac(), 350, 250);
+    addObject(new Door1(),20, 300);
 }
 
     /**

@@ -12,6 +12,7 @@ public class bullet extends Actor
     int hit= 0;
     public int speed = 10;
     public int turn = 0;
+    splatter = new GreenfootImage("projectile burst.png");
     /**
      * Act - do whatever the CopyOfBullet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -22,7 +23,18 @@ public class bullet extends Actor
        setLocation(getX() + speed + turn, getY());
        //checkBoundaries();
        destroyEnemies();
+       if(foundRock()) {
+           setImage(gifImage.getCurrentImage());
+            if (timer.millisElapsed() > 100 && Greenfoot.isKeyDown("space")){
+     // Code here for firing a new shot
+      setImage(splatter);
+                     getWorld().removeObject(this);
+
+     timer.mark(); // Reset the timer
+ }
+        }
    }
+    private SimpleTimer timer = new SimpleTimer();
       //destroy bullets that are off screen.
    public void checkBoundaries()
    {
@@ -31,6 +43,7 @@ public class bullet extends Actor
        if(getY() > getWorld().getHeight() - 1) 
             getWorld().removeObject(this);
    }
+   
    
    //"destroyEnemies()" destroys enemies.
    public void destroyEnemies()
@@ -42,5 +55,12 @@ public class bullet extends Actor
             getWorld().removeObject(this);
        }
    }
- 
+     protected boolean foundRock() {
+            Actor rock;
+            rock = getOneObjectAtOffset(0, 0, Rock.class);
+            if(rock != null) {
+                   return true;
+            }
+            return false;
+        }
 }    
