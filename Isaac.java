@@ -36,6 +36,9 @@ public void changeworld() {
              if (isTouching(Door1.class)) {
                 Greenfoot.setWorld(new MyWorld3());
             }
+                         if (isTouching(Door2.class)) {
+                Greenfoot.setWorld(new MyWorld4());
+            }
 }
 
  
@@ -72,6 +75,7 @@ public void changeworld() {
          public void checkFire() {
          bomb++;
          bullet bullet = new bullet();
+         
          getWorld().addObject(bullet, getX()+26, getY());
          if (Greenfoot.isKeyDown("left")) {bullet.speed=(-10); bullet.turn = (0);}
             else if (Greenfoot.isKeyDown("down") && (timer.millisElapsed() > 500)) {bullet.speed=(0); bullet.turn = (0); bomb=0;timer.mark();}

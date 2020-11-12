@@ -11,7 +11,7 @@ public class MyWorld2 extends World
         protected void populateTheWorld()
 {
     addObject(new Isaac(), 350, 250);
-    addObject(new Door1(),20, 300);
+    addObject(new Door2(),780, 300);
     addObject(new Rock(), Greenfoot.getRandomNumber(800), Greenfoot.getRandomNumber(600));
 }
 

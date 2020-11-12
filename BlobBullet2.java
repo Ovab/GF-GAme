@@ -6,14 +6,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class bullet extends Actor
+public class BlobBullet2 extends Actor
 {
     int hp= 10;
     int hit= 0;
-    public int speed = 10;
-    public int turn = 0;
+    public int speed = -10;
      private GreenfootImage splatter;
-    public bullet(){
+    public BlobBullet2(){
     splatter = new GreenfootImage("projectile burst.png");
 }
     /**
@@ -21,18 +20,16 @@ public class bullet extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
    public void act()   {
-       setLocation(getX() + speed + turn, getY());
+       setLocation(getX() + speed, getY());
                destroyEnemies();
-               destroyBlob();
-       //checkBoundaries();
+       checkBoundaries();
 }
     private SimpleTimer timer = new SimpleTimer();
       //destroy bullets that are off screen.
    public void checkBoundaries(){
        if(getX() > getWorld().getWidth() -10 || (getX() < 10)){
                        if (timer.millisElapsed() > 10){
-     // Code here for firing a new shot
-      setImage(splatter);
+            getWorld().removeObject(this);
                          timer.mark(); // Reset the timer 
                     }
                 }
@@ -40,20 +37,11 @@ public class bullet extends Actor
    //"destroyEnemies()" destroys enemies.
    public void destroyEnemies()
    {
-       //"Enemy" can be any class that you want the bullet to destroy.
-       Actor enemy = getOneIntersectingObject(SadIsaac.class);
+       //"Enemy" can be any class that you want the BlobBullet2 to destroy.
+       Actor enemy = getOneIntersectingObject(Isaac.class);
        if(enemy != null) {
             getWorld().removeObject(enemy);
-            getWorld().removeObject(this);
        }
-       
    }
-   public void destroyBlob(){
-                 Actor enemy2 = getOneIntersectingObject(Blob.class);
-       if(enemy2 != null) {
-            getWorld().removeObject(enemy2);
-            getWorld().removeObject(this);
-       }
-    }
    
 }    
