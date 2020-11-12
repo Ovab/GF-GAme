@@ -74,7 +74,7 @@ public void changeworld() {
 
          public void checkFire() {
          bomb++;
-         bullet bullet = new bullet();
+         Bullet bullet = new Bullet();
          
          getWorld().addObject(bullet, getX()+26, getY());
          if (Greenfoot.isKeyDown("left")) {bullet.speed=(-10); bullet.turn = (0);}

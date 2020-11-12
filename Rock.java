@@ -15,14 +15,7 @@ public class Rock extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
-       Actor enemy = getOneIntersectingObject(Isaac.class);
-       if(enemy != null) {
-            getWorld().removeObject(enemy);
-             Greenfoot.stop();
-             Greenfoot.playSound("BABA BOOEY.mp3");
-            getWorld().removeObject(this);
-       }
+
     }
              public void BlobcheckFire() {
          BlobBullet BlobBullet = new BlobBullet();
