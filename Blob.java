@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Blob extends Actor
 {
+    private SimpleTimer timer = new SimpleTimer();
     /**
      * Act - do whatever the Blob wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -22,5 +23,12 @@ public class Blob extends Actor
              Greenfoot.playSound("BABA BOOEY.mp3");
             getWorld().removeObject(this);
        }
-    }    
-}
+       if (timer.millisElapsed() > 1000){
+               BlobcheckFire();
+            }
+    }
+             public void BlobcheckFire() {
+                BlobBullet BlobBullet = new BlobBullet();
+                getWorld().addObject(BlobBullet, getX()+26, getY());
+                BlobBullet.speed=(10);timer.mark();}
+        }
