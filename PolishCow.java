@@ -20,15 +20,6 @@ public class PolishCow extends Actor
         setImage(myGif.getCurrentImage());
     }    
      private SimpleTimer timer = new SimpleTimer();
-    public void Koenotspam() {
-            if (fired != Greenfoot.isKeyDown("right")) {fired = ! fired;if (fired) {koeCheckFire(); }}     
-                                
-            if (fired2 != Greenfoot.isKeyDown("left")) {fired2 =! fired2;if (fired2) {koeCheckFire(); }} 
-        
-            if (fired3 != Greenfoot.isKeyDown("down")) {fired3 = ! fired3;if (fired3) {koeCheckFire(); }} 
-        
-            if (fired4 != Greenfoot.isKeyDown("up")) {fired4 = ! fired4;if (fired4) {Greenfoot.playSound("Fart.mp3"); bomb+=5;}} 
-    }
     
     protected boolean foundRock() {
             Actor rock;

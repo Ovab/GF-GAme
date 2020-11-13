@@ -6,14 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class KoeBullet extends Actor
+public class SisterBullet extends Actor
 {
     int hp= 10;
     int hit= 0;
     public int speed = 10;
     public int turn = 0;
      private GreenfootImage splatter;
-    public KoeBullet(){
+    public SisterBullet(){
     splatter = new GreenfootImage("projectile burst.png");
 }
     /**
@@ -42,7 +42,7 @@ public class KoeBullet extends Actor
    public void destroyEnemies()
    {
        //"Enemy" can be any class that you want the bullet to destroy.
-       Actor enemy = getOneIntersectingObject(Isaac.class);
+       Actor enemy = getOneIntersectingObject(CuredIsaac.class);
        if(enemy != null) {
             getWorld().removeObject(enemy);
             getWorld().removeObject(this);

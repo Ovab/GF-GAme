@@ -28,12 +28,12 @@ public class SadIsaac extends Actor
             move(-15);
         }
  move(4);
-        if (getWorld().getObjects(Isaac.class).isEmpty()) return; // skips following if the Isaac is not in world
-        Actor Isaac = (Actor)getWorld().getObjects(Isaac.class).get(0); // gets reference to Isaac
+        if (getWorld().getObjects(BossIsaac.class).isEmpty()) return; // skips following if the Isaac is not in world
+        Actor Isaac = (Actor)getWorld().getObjects(BossIsaac.class).get(0); // gets reference to Isaac
         turnTowards(Isaac.getX(), Isaac.getY()); // turn toward Isaac
         
 
-               Actor enemy = getOneIntersectingObject(Isaac.class);
+               Actor enemy = getOneIntersectingObject(BossIsaac.class);
        if(enemy != null) {
             getWorld().removeObject(enemy);
              Greenfoot.stop();

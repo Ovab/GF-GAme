@@ -29,5 +29,11 @@ public class MyWorld3 extends World
     {
         Isaac isaac = new Isaac();
         addObject(isaac,377,496);
+        Deur deur = new Deur();
+        addObject(deur,425,31);
+        PolishCow polishCow = new PolishCow();
+        addObject(polishCow,312,379);
+        PolishCow polishCow2 = new PolishCow();
+        addObject(polishCow2,337,126);
     }
 }
