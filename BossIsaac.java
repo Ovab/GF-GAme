@@ -26,9 +26,6 @@ public BossIsaac()
     imageLeft= new GreenfootImage("isaacleft.png");
     imageRight= new GreenfootImage("isaacright.png");
     imageDown= new GreenfootImage("isaacdwn.png");
-             if (timer.millisElapsed() > 10000){
-                 new Deaur2();
-        }
 }
 
 public void changeworld() {
@@ -43,7 +40,7 @@ public void changeworld() {
                          if (isTouching(Door2.class)) {
                 Greenfoot.setWorld(new MyWorld4());
             }
-                                     if (isTouching(Deaur2.class)) {
+            if (isTouching(Deaur2.class)) {
                 Greenfoot.setWorld(new MyWorld5());
             }
 }
@@ -59,6 +56,7 @@ public void changeworld() {
         }
 
     }
+    
     public void notspam() {
             if (fired != Greenfoot.isKeyDown("right")) {fired = ! fired;if (fired) {checkFire(); }}     
                                 

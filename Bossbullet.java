@@ -8,7 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bossbullet extends Actor
 {
-    int boss= 100;
     int hit= 0;
     public int speed = 10;
     public int turn = 0;
@@ -23,7 +22,6 @@ public class Bossbullet extends Actor
    public void act()   {
        setLocation(getX() + speed + turn, getY());
                destroyEnemies();
-                
        //checkBoundaries();
 }
     private SimpleTimer timer = new SimpleTimer();
@@ -45,24 +43,7 @@ public class Bossbullet extends Actor
        if(enemy != null) {
             getWorld().removeObject(enemy);
             getWorld().removeObject(this);
-            boss=80;
        }
-       
    }
-   public void destroyKoe(){
-                 Actor enemy3 = getOneIntersectingObject(PolishCow.class);
-       if(enemy3 != null) {
-            getWorld().removeObject(enemy3);
-            getWorld().removeObject(this);
-       }
-    }
-       
-      public void destroyBlob(){
-                 Actor enemy2 = getOneIntersectingObject(Blob.class);
-       if(enemy2 != null) {
-            getWorld().removeObject(enemy2);
-            getWorld().removeObject(this);
-       }    
-    }
    
 }    

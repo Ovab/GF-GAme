@@ -8,12 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
+                     private SimpleTimer timer = new SimpleTimer();
     GreenfootSound backgroundMusic = new GreenfootSound("Rippin.mp3");
     protected void populateTheWorld()
     {
         addObject(new BossIsaac(), 350, 250);
+        addObject(new SadIsaacLast(), 1000, 500);
         for (int i = 0; i < 100; i++) {
             addObject(new SadIsaac(), 1000, 500);
+        }
+                     if (timer.millisElapsed() > 1000){
+                                
         }
     }
 
@@ -27,11 +32,10 @@ public class MyWorld extends World
      */
     public MyWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        // Create a new world
         super(1200, 800, 1);
         populateTheWorld();
         started();
-
         prepare();
     }
 
