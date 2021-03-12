@@ -46,6 +46,7 @@ public class SisterBullet extends Actor
        if(enemy != null) {
             getWorld().removeObject(enemy);
             getWorld().removeObject(this);
+            Greenfoot.stop();
        }
    }
      protected boolean foundRock() {
